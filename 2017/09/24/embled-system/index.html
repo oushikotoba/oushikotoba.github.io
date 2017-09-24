@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="嵌入式," />
 
 
 
@@ -71,19 +71,20 @@
 
 
 
-<meta name="description" content="一个Deadlock的实现标签（空格分隔）： 嵌入式  一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确">
+<meta name="description" content="一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Net">
+<meta name="keywords" content="嵌入式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="embled_system">
+<meta property="og:title" content="一个Deadlock的实现">
 <meta property="og:url" content="http://oushikotoba.github.io/2017/09/24/embled-system/index.html">
 <meta property="og:site_name" content="Samuel Wong">
-<meta property="og:description" content="一个Deadlock的实现标签（空格分隔）： 嵌入式  一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确">
+<meta property="og:description" content="一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Net">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-1.png">
-<meta property="og:updated_time" content="2017-09-24T07:55:25.117Z">
+<meta property="og:updated_time" content="2017-09-24T08:17:59.632Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="embled_system">
-<meta name="twitter:description" content="一个Deadlock的实现标签（空格分隔）： 嵌入式  一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确">
+<meta name="twitter:title" content="一个Deadlock的实现">
+<meta name="twitter:description" content="一.开发环境配置 工具：Ubuntu16.04，VMWare Work Station； 语言：Javac###1.Ubuntu虚拟机安装打开VMWare Workstation，-&amp;gt;创建新的虚拟机-&amp;gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成###2.Java库安装安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Net">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png">
 
 
@@ -120,7 +121,7 @@
 
 
 
-  <title>embled_system | Samuel Wong</title>
+  <title>一个Deadlock的实现 | Samuel Wong</title>
   
 
 
@@ -271,7 +272,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
 
         
         
-          <h1 class="post-title" itemprop="name headline">embled_system</h1>
+          <h1 class="post-title" itemprop="name headline">一个Deadlock的实现</h1>
         
 
         <div class="post-meta">
@@ -321,8 +322,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
       
 
       
-        <h1 id="一个Deadlock的实现"><a href="#一个Deadlock的实现" class="headerlink" title="一个Deadlock的实现"></a>一个Deadlock的实现</h1><p>标签（空格分隔）： 嵌入式</p>
-<hr>
+        <hr>
 <h2 id="一-开发环境配置"><a href="#一-开发环境配置" class="headerlink" title="一.开发环境配置"></a>一.开发环境配置</h2><ul>
 <li>工具：Ubuntu16.04，VMWare Work Station；</li>
 <li>语言：Javac<br>###1.Ubuntu虚拟机安装<br>打开VMWare Workstation，-&gt;创建新的虚拟机-&gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成<br>###2.Java库安装<br>安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Network，将Network proxy中的none一项改为Automatic，然后系统会提示输入你的登陆密码。完成后可以正常连网。</li>
@@ -371,6 +371,12 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
+          
+        </div>
       
 
       
@@ -478,6 +484,15 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
           
 
           
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -529,7 +544,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一个Deadlock的实现"><span class="nav-number">1.</span> <span class="nav-text">一个Deadlock的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-开发环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">一.开发环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-结果分析"><span class="nav-number">1.2.</span> <span class="nav-text">三.结果分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-开发环境配置"><span class="nav-number">1.</span> <span class="nav-text">一.开发环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-结果分析"><span class="nav-number">2.</span> <span class="nav-text">三.结果分析</span></a></li></ol></div>
             
 
           </div>
