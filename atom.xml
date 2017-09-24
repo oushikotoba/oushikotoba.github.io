@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Samuel Wong</title>
+  
+  <subtitle>Surprised to meet you here</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://oushikotoba.github.io/"/>
+  <updated>2017-09-24T07:55:25.117Z</updated>
+  <id>http://oushikotoba.github.io/</id>
+  
+  <author>
+    <name>灵子</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>embled_system</title>
+    <link href="http://oushikotoba.github.io/2017/09/24/embled-system/"/>
+    <id>http://oushikotoba.github.io/2017/09/24/embled-system/</id>
+    <published>2017-09-24T07:53:49.000Z</published>
+    <updated>2017-09-24T07:55:25.117Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一个Deadlock的实现"><a href="#一个Deadlock的实现" class="headerlink" title="一个Deadlock的实现"></a>一个Deadlock的实现</h1><p>标签（空格分隔）： 嵌入式</p><hr><h2 id="一-开发环境配置"><a href="#一-开发环境配置" class="headerlink" title="一.开发环境配置"></a>一.开发环境配置</h2><ul><li>工具：Ubuntu16.04，VMWare Work Station；</li><li>语言：Javac<br>###1.Ubuntu虚拟机安装<br>打开VMWare Workstation，-&gt;创建新的虚拟机-&gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成<br>###2.Java库安装<br>安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Network，将Network proxy中的none一项改为Automatic，然后系统会提示输入你的登陆密码。完成后可以正常连网。</li></ul><p>打开terminal窗口，输入以下代码：</p><blockquote><p>sudo apt install default-jdk</p></blockquote><p>输入javac，看到下图：<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png" alt="img"><br>安装成功</p><p>##二.死锁代码实现<br>首先，这里提一下synchronized语句的作用<br>synchronized可以作用于方法、代码块和类。这里选择的是作用于整个方法的语句。</p><p>Synchronized作用于整个方法的写法有两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public synchronized void method()</div><div class="line">&#123;</div><div class="line">   // todo</div><div class="line">&#125;</div><div class="line">//or</div><div class="line">public void method()</div><div class="line">&#123;</div><div class="line">   synchronized(this) &#123;</div><div class="line">      // todo</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>也就是说修饰方法内整个代码块的写法与直接修饰一个方法的写法是等价的。<br>我们知道线程是CPU调度的最小单位。代码中我们以thread的形式定义。如果我们定义的一个线程开始访问一个对象中的synchronized(this)同步代码块时，其他试图访问该对象的线程将被阻塞，因为在执行synchronized代码块时会锁定当前的对象，只有执行完该代码块才能释放该对象锁。但是这个时候其它线程仍然可以访问该对象中的非synchronized(this)同步代码块。 </p><p>建立一个死锁的java代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(B,b)</span></span>&#123;</div><div class="line">b.last();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">last</span><span class="params">()</span></span>&#123;<span class="comment">//SYNCHRONIZED METHOD</span></div><div class="line">        System.out.println(<span class="string">"Inside A.last()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">(A,a)</span></span>&#123;</div><div class="line">        a.last();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">last</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Inside B.last()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deadlock</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">    A a=<span class="keyword">new</span> A();B b=<span class="keyword">new</span> B();</div><div class="line"></div><div class="line">    Deadlock()&#123;</div><div class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line"><span class="keyword">int</span> count = <span class="number">20000</span>;</div><div class="line"></div><div class="line">t.start();</div><div class="line"><span class="keyword">while</span>(count--&gt;<span class="number">0</span>);</div><div class="line">System.out.println(<span class="string">"A "</span>+System.nanoTime() );</div><div class="line">a.methodA(b);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">System.out.println(<span class="string">"B "</span>+System.nanoTime() );     </div><div class="line">        b.methodB(a);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">    <span class="keyword">new</span> Deadlock();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>将上面的代码保存至Deadlock.java<br>在terminal窗口下输入</p><blockquote><p>java Deadlock.java</p></blockquote><p>然后可以看到class文件被生成在同一目录下<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-1.png" alt="img"></p><h2 id="三-结果分析"><a href="#三-结果分析" class="headerlink" title="三.结果分析"></a>三.结果分析</h2><p>运行程序需要写一个bat文件<br>用下面的代码创建一个Deadlock.bat，放在同一目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!bin/bash</div><div class="line">for(( c=1;c&lt;=10000;c++))</div><div class="line">do</div><div class="line">    echo &quot;$c times&quot;</div><div class="line">    java Deadlock</div><div class="line">done</div></pre></td></tr></table></figure></p><p>其中c是执行次数，这里调高一点<br>在terminal窗口下执行：</p><blockquote><p>chmod +x Deadlock.bat<br> ./Deadlock.bat</p></blockquote><p>就可以看到bat文件执行结果</p><p>程序在第886次运行停止不动，产生了死锁。<br>要弄明白死锁是怎么发生的，首先我们要了解死锁产生的四个必要条件：</p><ul><li>互斥条件：一个资源每次只能被一个进程使用</li><li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不 放</li><li>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺</li><li>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系</li></ul><p>知道多少次开始死锁并没有用，这个次数因电脑不同也会不一样，可能一台性能比较好的电脑跑上几万次也没出现死锁。关键还是要找到A和B是如何相互调用的。</p><p>观察A与B的延时，它们非常接近，所以A与B同时发出请求，互相申请对方的资源，于是死锁等待就发生了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一个Deadlock的实现&quot;&gt;&lt;a href=&quot;#一个Deadlock的实现&quot; class=&quot;headerlink&quot; title=&quot;一个Deadlock的实现&quot;&gt;&lt;/a&gt;一个Deadlock的实现&lt;/h1&gt;&lt;p&gt;标签（空格分隔）： 嵌入式&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://oushikotoba.github.io/2017/09/16/samuel/"/>
+    <id>http://oushikotoba.github.io/2017/09/16/samuel/</id>
+    <published>2017-09-16T07:33:58.795Z</published>
+    <updated>2017-09-21T16:10:26.276Z</updated>
+    
+    <content type="html"><![CDATA[<p>#Deadlock</p><p>##王诗语 15352320</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#Deadlock&lt;/p&gt;
+&lt;p&gt;##王诗语 15352320&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
