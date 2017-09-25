@@ -81,7 +81,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-1.png">
-<meta property="og:updated_time" content="2017-09-24T09:21:07.531Z">
+<meta property="og:updated_time" content="2017-09-25T15:19:39.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个Deadlock的实现">
 <meta name="twitter:description" content="嵌入式系统实验">
@@ -325,14 +325,14 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
         <p>嵌入式系统实验</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="一-开发环境配置"><a href="#一-开发环境配置" class="headerlink" title="一.开发环境配置"></a>一.开发环境配置</h2><ul>
 <li>工具：Ubuntu16.04，VMWare Work Station；</li>
-<li>语言：Javac<br>###1.Ubuntu虚拟机安装<br>打开VMWare Workstation，-&gt;创建新的虚拟机-&gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成<br>###2.Java库安装<br>安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Network，将Network proxy中的none一项改为Automatic，然后系统会提示输入你的登陆密码。完成后可以正常连网。</li>
+<li>语言：Javac<h3 id="1-Ubuntu虚拟机安装"><a href="#1-Ubuntu虚拟机安装" class="headerlink" title="1.Ubuntu虚拟机安装"></a>1.Ubuntu虚拟机安装</h3>打开VMWare Workstation，-&gt;创建新的虚拟机-&gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成<h3 id="2-Java库安装"><a href="#2-Java库安装" class="headerlink" title="2.Java库安装"></a>2.Java库安装</h3>安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Network，将Network proxy中的none一项改为Automatic，然后系统会提示输入你的登陆密码。完成后可以正常连网。</li>
 </ul>
 <p>打开terminal窗口，输入以下代码：</p>
 <blockquote>
 <p>sudo apt install default-jdk</p>
 </blockquote>
 <p>输入javac，看到下图：<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png" alt="img"><br>安装成功</p>
-<p>##二.死锁代码实现<br>首先，这里提一下synchronized语句的作用<br>synchronized可以作用于方法、代码块和类。这里选择的是作用于整个方法的语句。</p>
+<h2 id="二-死锁代码实现"><a href="#二-死锁代码实现" class="headerlink" title="二.死锁代码实现"></a>二.死锁代码实现</h2><p>首先，这里提一下synchronized语句的作用<br>synchronized可以作用于方法、代码块和类。这里选择的是作用于整个方法的语句。</p>
 <p>Synchronized作用于整个方法的写法有两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public synchronized void method()</div><div class="line">&#123;</div><div class="line">   // todo</div><div class="line">&#125;</div><div class="line">//or</div><div class="line">public void method()</div><div class="line">&#123;</div><div class="line">   synchronized(this) &#123;</div><div class="line">      // todo</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>也就是说修饰方法内整个代码块的写法与直接修饰一个方法的写法是等价的。<br>我们知道线程是CPU调度的最小单位。代码中我们以thread的形式定义。如果我们定义的一个线程开始访问一个对象中的synchronized(this)同步代码块时，其他试图访问该对象的线程将被阻塞，因为在执行synchronized代码块时会锁定当前的对象，只有执行完该代码块才能释放该对象锁。但是这个时候其它线程仍然可以访问该对象中的非synchronized(this)同步代码块。 </p>
 <p>建立一个死锁的java代码：</p>
@@ -387,15 +387,15 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/16/samuel/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/25/html2/" rel="prev" title="html2">
+                html2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -544,7 +544,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一-开发环境配置"><span class="nav-number">2.</span> <span class="nav-text">一.开发环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-结果分析"><span class="nav-number">3.</span> <span class="nav-text">三.结果分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一-开发环境配置"><span class="nav-number">2.</span> <span class="nav-text">一.开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Ubuntu虚拟机安装"><span class="nav-number">2.1.</span> <span class="nav-text">1.Ubuntu虚拟机安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Java库安装"><span class="nav-number">2.2.</span> <span class="nav-text">2.Java库安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-死锁代码实现"><span class="nav-number">3.</span> <span class="nav-text">二.死锁代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-结果分析"><span class="nav-number">4.</span> <span class="nav-text">三.结果分析</span></a></li></ol></div>
             
 
           </div>
