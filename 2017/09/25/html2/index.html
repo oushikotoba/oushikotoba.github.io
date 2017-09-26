@@ -71,19 +71,19 @@
 
 
 
-<meta name="description" content="平时经常遇到一些输入框里面有一行灰色的文字提示，比如输入密码，这些文字在点击输入框后就会自行消失，这里给出了html+javascript的实现。 html中input常用于表单的内容提交：12345678910&amp;lt;form action=&quot;edit.jsp&quot; method=&quot;post&quot; enctype=&quot;application/x-www-form-urlencoded&quot;&amp;gt;&amp;lt;fi">
+<meta name="description" content="输入框灰字默认值的实现">
 <meta name="keywords" content="html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html2">
 <meta property="og:url" content="http://oushikotoba.github.io/2017/09/25/html2/index.html">
 <meta property="og:site_name" content="Samuel Wong">
-<meta property="og:description" content="平时经常遇到一些输入框里面有一行灰色的文字提示，比如输入密码，这些文字在点击输入框后就会自行消失，这里给出了html+javascript的实现。 html中input常用于表单的内容提交：12345678910&amp;lt;form action=&quot;edit.jsp&quot; method=&quot;post&quot; enctype=&quot;application/x-www-form-urlencoded&quot;&amp;gt;&amp;lt;fi">
+<meta property="og:description" content="输入框灰字默认值的实现">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-26-1.png">
-<meta property="og:updated_time" content="2017-09-26T09:57:37.506Z">
+<meta property="og:updated_time" content="2017-09-26T17:00:42.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html2">
-<meta name="twitter:description" content="平时经常遇到一些输入框里面有一行灰色的文字提示，比如输入密码，这些文字在点击输入框后就会自行消失，这里给出了html+javascript的实现。 html中input常用于表单的内容提交：12345678910&amp;lt;form action=&quot;edit.jsp&quot; method=&quot;post&quot; enctype=&quot;application/x-www-form-urlencoded&quot;&amp;gt;&amp;lt;fi">
+<meta name="twitter:description" content="输入框灰字默认值的实现">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-26-1.png">
 
 
@@ -321,8 +321,29 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
       
 
       
-        <p>平时经常遇到一些输入框里面有一行灰色的文字提示，比如输入密码，这些文字在点击输入框后就会自行消失，这里给出了html+javascript的实现。</p>
-<p><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-26-1.png" alt="img"><br>html中input常用于表单的内容提交：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"edit.jsp"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"application/x-www-form-urlencoded"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">legend</span>&gt;</span>修改博客<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">	标题：</div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"title"</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"输入博客标题"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	关键字:</div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"keywords"</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"输入关键字"</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        <p>输入框灰字默认值的实现</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>平时经常遇到一些输入框里面有一行浅色的文字提示，比如“输入密码”，“发表您的观点之类”的。这些文字在点击输入框后就会自行消失，这里给出了这种效果在网页上的实现。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><blockquote>
+<p>html语言，提交程序jsp，javascript语言</p>
+</blockquote>
+<h2 id="表单简介"><a href="#表单简介" class="headerlink" title="表单简介"></a>表单简介</h2><p><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-26-1.png" alt="img"></p>
+<p>这是一个信息提交界面，其中有三个文本输入框，分别用到了html中input元素和textarea元素。<br>构造这样的界面需要使用到网页的表单元素form，把网页中输入数据并提交给Web服务器上的程序(后台程序)处理。<br>表单元素form主要有三个属性:action,method,entype。下面展示了上图表单的文本输入组件的构造：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"edit.jsp"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"application/x-www-form-urlencoded"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">legend</span>&gt;</span>修改博客<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>标题：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"title"</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>关键字：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"keywords"</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	</div><div class="line">	</div><div class="line">	///省略</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">	内容：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">"content"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"overflow:scroll"</span> <span class="attr">rows</span>=<span class="string">"12"</span> <span class="attr">cols</span>=<span class="string">"60"</span> &gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><p>到此我们只是构造好了几个能输入文本的框框，里面还是空空如也。我们要做的就是把默认值加进去。<br>这里默认值的添加input元素和textarea有所不同，具体如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"输入博客标题"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>input无结束标签，所以通过属性值里的value来初始化</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"overflow:scroll"</span> <span class="attr">rows</span>=<span class="string">"12"</span> <span class="attr">cols</span>=<span class="string">"60"</span> &gt;</span>在这里输入博客内容<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>textarea是在前后框起来的，所以默认值在熟悉的位置</p>
+<p>做到这里，就需要用到javascript实现点击功能：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">   function inputClick(target)&#123;</span></div><div class="line"><span class="undefined">     var value="";</span></div><div class="line"><span class="undefined">     if(target.id=="title")</span></div><div class="line"><span class="undefined">        value="输入博客标题";</span></div><div class="line"><span class="undefined">     if(target.id=="keywords")</span></div><div class="line"><span class="undefined">        value="输入关键字";</span></div><div class="line"><span class="undefined">     if(target.id=="content")</span></div><div class="line"><span class="undefined">        value="在这里输入博客内容";</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">     if(target.value=='')&#123;</span></div><div class="line"><span class="undefined">       target.style.color="#B0B0B0";</span></div><div class="line"><span class="undefined">       target.value=value;</span></div><div class="line"><span class="undefined">     &#125;</span></div><div class="line"><span class="undefined">     else </span></div><div class="line"><span class="undefined">     if(target.value==value)&#123;</span></div><div class="line"><span class="undefined">        target.style.color="#000000";</span></div><div class="line"><span class="undefined">        target.value="";</span></div><div class="line"><span class="undefined">     &#125;</span></div><div class="line"><span class="undefined">   &#125;;</span></div><div class="line"><span class="undefined">   var f1=function()&#123;inputClick(this);&#125;;</span></div><div class="line"><span class="undefined">   document.getElementById("title").onclick= f1;</span></div><div class="line"><span class="undefined">   document.getElementById("keywords").onclick= f1;</span></div><div class="line"><span class="undefined">   document.getElementById("content").onclick= f1;</span></div><div class="line"><span class="undefined">   document.getElementById("title").onblur= f1;</span></div><div class="line"><span class="undefined">   document.getElementById("keywords").onblur= f1;</span></div><div class="line"><span class="undefined">   document.getElementById("content").onblur= f1;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>通过代码已经给出的javascript部分，我了解到实现方法是：</p>
+<blockquote>
+<ul>
+<li>通过target找到id值，根据id值判断是否点击到输入框</li>
+<li>点击输入框时函数内部value值被赋值为默认文本，通过判断函数内部value值和target处value值是否相等来实现对控制显示文字的value值进行控制的。</li>
+<li>控制显示文字调用onclick()和onblur()函数，从字面意思也可以看出分别对应target被点击和未被点击的情况，也就是将value转换函数inputClick(target)的值传给当前的onclick()或onblur()，达到改变输入框默认内容的效果。</li>
+</ul>
+</blockquote>
+<p>对于input来说只需要在input的属性设定中加入对这个input的id的定义，以及对默认值value的定义就可以了。<br>但是对于文本框textarea来说，由于其默认显示值需要在……&gt;default&lt; /textarea&gt;处定义，除了定义value,这个位置也不能漏。</p>
+<p>另外，查了一下资料，发现对于textarea灰色字体的实现可以直接用onclick()以及onblur()函数在标签中实现，，所以把原value值“在这里输入博客”改成空就好，onblur的写法则相反，这样就可以实现textarea处的默认灰字文本。即：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">"content"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"overflow:scroll"</span> <span class="attr">rows</span>=<span class="string">"12"</span> <span class="attr">cols</span>=<span class="string">"60"</span> </span></div><div class="line"><span class="tag"><span class="attr">onclick</span>=<span class="string">"if(value=='在这里输入博客内容'&#125;&#123;value=''&#125;"</span><span class="attr">onblur</span>=<span class="string">"if(value=='')&#123;value='在这里输入博客内容'&#125;"</span> &gt;</span>在这里输入博客内容<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>以上就是文本框灰字默认值的实现方法了。</p>
 
       
     </div>
@@ -413,8 +434,17 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -491,6 +521,22 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单简介"><span class="nav-number">3.</span> <span class="nav-text">表单简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能实现"><span class="nav-number">4.</span> <span class="nav-text">功能实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分析"><span class="nav-number">5.</span> <span class="nav-text">代码分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
