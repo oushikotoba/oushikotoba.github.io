@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="嵌入式," />
+  <meta name="keywords" content="html," />
 
 
 
@@ -71,22 +71,18 @@
 
 
 
-<meta name="description" content="嵌入式系统实验">
-<meta name="keywords" content="嵌入式">
+<meta name="description" content="(1)掌握基本HTML基本元素的使用方法">
+<meta name="keywords" content="html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个Deadlock的实现">
-<meta property="og:url" content="http://oushikotoba.github.io/2017/09/24/embled-system/index.html">
+<meta property="og:title" content="html语法入门">
+<meta property="og:url" content="http://oushikotoba.github.io/2017/09/25/html1/index.html">
 <meta property="og:site_name" content="Samuel Wong">
-<meta property="og:description" content="嵌入式系统实验">
+<meta property="og:description" content="(1)掌握基本HTML基本元素的使用方法">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-3.png">
-<meta property="og:updated_time" content="2017-09-26T09:56:40.732Z">
+<meta property="og:updated_time" content="2017-09-26T09:57:14.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个Deadlock的实现">
-<meta name="twitter:description" content="嵌入式系统实验">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png">
+<meta name="twitter:title" content="html语法入门">
+<meta name="twitter:description" content="(1)掌握基本HTML基本元素的使用方法">
 
 
 
@@ -116,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://oushikotoba.github.io/2017/09/24/embled-system/"/>
+  <link rel="canonical" href="http://oushikotoba.github.io/2017/09/25/html1/"/>
 
 
 
 
 
-  <title>一个Deadlock的实现 | Samuel Wong</title>
+  <title>html语法入门 | Samuel Wong</title>
   
 
 
@@ -256,7 +252,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oushikotoba.github.io/2017/09/24/embled-system/">
+    <link itemprop="mainEntityOfPage" href="http://oushikotoba.github.io/2017/09/25/html1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="灵子">
@@ -273,7 +269,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
 
         
         
-          <h1 class="post-title" itemprop="name headline">一个Deadlock的实现</h1>
+          <h1 class="post-title" itemprop="name headline">html语法入门</h1>
         
 
         <div class="post-meta">
@@ -285,8 +281,8 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T15:53:49+08:00">
-                2017-09-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-25T22:25:47+08:00">
+                2017-09-25
               </time>
             
 
@@ -323,41 +319,13 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
       
 
       
-        <p>嵌入式系统实验</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="一-开发环境配置"><a href="#一-开发环境配置" class="headerlink" title="一.开发环境配置"></a>一.开发环境配置</h2><ul>
-<li>工具：Ubuntu16.04，VMWare Work Station；</li>
-<li>语言：Javac<br>###1.Ubuntu虚拟机安装<br>打开VMWare Workstation，-&gt;创建新的虚拟机-&gt;典型，将Ubuntn镜像文件加载进来，打开虚拟机，等待Ubuntu自动安装完成<br>###2.Java库安装<br>安装好Ubuntu后，首先确认网络是否连接，若未连接成功，则在设定图表中点击Network，将Network proxy中的none一项改为Automatic，然后系统会提示输入你的登陆密码。完成后可以正常连网。</li>
-</ul>
-<p>打开terminal窗口，输入以下代码：</p>
-<blockquote>
-<p>sudo apt install default-jdk</p>
-</blockquote>
-<p>输入javac，看到下图：<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-2.png" alt="img"><br>安装成功</p>
-<h2 id="二-死锁代码实现"><a href="#二-死锁代码实现" class="headerlink" title="二.死锁代码实现"></a>二.死锁代码实现</h2><p>首先，这里提一下synchronized语句的作用<br>synchronized可以作用于方法、代码块和类。这里选择的是作用于整个方法的语句。</p>
-<p>Synchronized作用于整个方法的写法有两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public synchronized void method()</div><div class="line">&#123;</div><div class="line">   // todo</div><div class="line">&#125;</div><div class="line">//or</div><div class="line">public void method()</div><div class="line">&#123;</div><div class="line">   synchronized(this) &#123;</div><div class="line">      // todo</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也就是说修饰方法内整个代码块的写法与直接修饰一个方法的写法是等价的。<br>我们知道线程是CPU调度的最小单位。代码中我们以thread的形式定义。如果我们定义的一个线程开始访问一个对象中的synchronized(this)同步代码块时，其他试图访问该对象的线程将被阻塞，因为在执行synchronized代码块时会锁定当前的对象，只有执行完该代码块才能释放该对象锁。但是这个时候其它线程仍然可以访问该对象中的非synchronized(this)同步代码块。 </p>
-<p>建立一个死锁的java代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(B,b)</span></span>&#123;</div><div class="line">	b.last();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">last</span><span class="params">()</span></span>&#123;<span class="comment">//SYNCHRONIZED METHOD</span></div><div class="line">        System.out.println(<span class="string">"Inside A.last()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">(A,a)</span></span>&#123;</div><div class="line">        a.last();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">last</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Inside B.last()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deadlock</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">    A a=<span class="keyword">new</span> A();B b=<span class="keyword">new</span> B();</div><div class="line"></div><div class="line">    Deadlock()&#123;</div><div class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">	<span class="keyword">int</span> count = <span class="number">20000</span>;</div><div class="line"></div><div class="line">	t.start();</div><div class="line">	<span class="keyword">while</span>(count--&gt;<span class="number">0</span>);</div><div class="line">	System.out.println(<span class="string">"A "</span>+System.nanoTime() );</div><div class="line">	a.methodA(b);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"B "</span>+System.nanoTime() );     </div><div class="line">        b.methodB(a);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">    	<span class="keyword">new</span> Deadlock();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>将上面的代码保存至Deadlock.java<br>在terminal窗口下输入</p>
-<blockquote>
-<p>java Deadlock.java</p>
-</blockquote>
-<p>然后可以看到class文件被生成在同一目录下<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-1.png" alt="img"></p>
-<h2 id="三-结果分析"><a href="#三-结果分析" class="headerlink" title="三.结果分析"></a>三.结果分析</h2><p>运行程序需要写一个bat文件<br>用下面的代码创建一个Deadlock.bat，放在同一目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!bin/bash</div><div class="line">for(( c=1;c&lt;=10000;c++))</div><div class="line">do</div><div class="line">    echo &quot;$c times&quot;</div><div class="line">    java Deadlock</div><div class="line">done</div></pre></td></tr></table></figure></p>
-<p>其中c是执行次数，这里调高一点<br>在terminal窗口下执行：</p>
-<blockquote>
-<p>chmod +x Deadlock.bat<br> ./Deadlock.bat</p>
-</blockquote>
-<p>就可以看到bat文件执行结果<br><img src="https://raw.githubusercontent.com/oushikotoba/Markdown_images/oushikotoba-res/9-24-3.png" alt="img"><br>程序在第886次运行停止不动，产生了死锁。<br>要弄明白死锁是怎么发生的，首先我们要了解死锁产生的四个必要条件：</p>
-<ul>
-<li>互斥条件：一个资源每次只能被一个进程使用</li>
-<li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不 放</li>
-<li>不剥夺条件:进程已获得的资源，在末使用完之前，不能强行剥夺</li>
-<li>循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系</li>
-</ul>
-<p>知道多少次开始死锁并没有用，这个次数因电脑不同也会不一样，可能一台性能比较好的电脑跑上几万次也没出现死锁。关键还是要找到A和B是如何相互调用的。</p>
-<p>观察A与B的延时，它们非常接近，所以A与B同时发出请求，互相申请对方的资源，于是死锁等待就发生了。</p>
-
+        <p>(1)掌握基本HTML基本元素的使用方法</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="网页元素"><a href="#网页元素" class="headerlink" title="网页元素"></a>网页元素</h2><p>一个html网页是由很多元素(element)组成的，每个元素由开始标签<br>(start tag)、内容和结束标签(end tag)三部分组成。 在开始标签中还可<br>以设置若干个元素属性。<br>（html大多数语法形式如下）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>   <span class="attr">lang</span> = <span class="string">"zh-cn"</span>&gt;</span>     ……      <span class="tag">&lt;/<span class="name">html</span>&gt;</span> </div><div class="line">标签名   属性名    属性值      内容      结束标签</div></pre></td></tr></table></figure></p>
+<p>html元素为html网页的根元素。在网页中加上开始标签和结束标签的动<br>作也称为打开标签和关闭标签。因为某些属性没有值，所以有值属性的等<br>号两端不能有空格</p>
+<h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>① 布局元素： h1~h6、 p、 div、 header、 section、 article、 footer nav aside<br>② 文字元素： em、 span、 i、 s、 b<br>a(href、 target、 虚拟主机、虚拟目录、绝对路径、相对路径)<br>③ 图像元素： img<br>④ 列表元素: ul、 li<br>⑤ 表格元素： table、 tr、 td<br>⑥ 表单元素： form、 input、 textarea、 select<br>⑦ 框架： frameset、 iframe<br>⑧ 其它元素： pre、 br、 hr、 html5的其它元素<br>各个元素的基本语法可以参考<a href="http://www.w3school.com.cn/h.asp" target="_blank" rel="external">HTML/CSS教程</a><br>这里我作为例子的html网页用到的是简单而且比较常用的元素。</p>
+<p>先来看放在开头的（一般自动生成）的<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE  html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-cn"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>第一句话声明了html协议的版本，默认html5，没有这句话，浏览器就会随便帮你选一套协议，这就有可能导致网页格式乱套了。<br>第二句话中zh-cn是简体中文，你可以改成en，则成为网页属性就是英文页面了。具体语言编码参照……</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>科研人员制造噪音来研究安静的价值<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined"> a:link,a:visited &#123;color:blue;text-decoration:none&#125;</span></div><div class="line"><span class="undefined"> body,inputC &#123;font-size:24px&#125;</span></div><div class="line"><span class="undefined"> input&#123;margin-top:20px&#125;</span></div><div class="line"><span class="undefined"> p &#123;text-indent:2em&#125;</span></div><div class="line"><span class="undefined"> #main,#footer,#header&#123;clear:both;max-width:40em;margin:80px auto&#125;</span></div><div class="line"><span class="undefined"> #header &#123;margin:0px auto&#125;</span></div><div class="line"><span class="undefined"> ul li &#123;float:left;list-style-type:none;width:4em;&#125;</span></div><div class="line"><span class="undefined"> #fig1 &#123;float:right;&#125;</span></div><div class="line"><span class="undefined"> table &#123;width:100%;border-collapse:collapse&#125;</span></div><div class="line"><span class="undefined"> td &#123;text-align:center&#125;</span></div><div class="line"><span class="undefined"> #cominput &#123;width:100%;height:400px&#125;</span></div><div class="line"><span class="undefined"> #comtitle &#123;margin-top:40px&#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/sysu.png"</span>&gt;</span></div><div class="line">	   <span class="tag">&lt;<span class="name">hr</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">       </div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/kj.html"</span>&gt;</span>科技<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/ny.html"</span>&gt;</span>农业<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/jk.html"</span>&gt;</span>健康<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/jy.html"</span>&gt;</span>教育<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/jj.html"</span>&gt;</span>经济<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">u</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://172.18.187.11:8080/lab/html1/sh.html"</span>&gt;</span>社会<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">u</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
       
     </div>
     
@@ -374,7 +342,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
       
         <div class="post-tags">
           
-            <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
+            <a href="/tags/html/" rel="tag"># html</a>
           
         </div>
       
@@ -387,14 +355,18 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/24/embled-system/" rel="next" title="一个Deadlock的实现">
+                <i class="fa fa-chevron-left"></i> 一个Deadlock的实现
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/25/html1/" rel="prev" title="html语法入门">
-                html语法入门 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/25/html2/" rel="prev" title="html2">
+                html2 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -544,7 +516,7 @@ color="255,255,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一-开发环境配置"><span class="nav-number">2.</span> <span class="nav-text">一.开发环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-死锁代码实现"><span class="nav-number">3.</span> <span class="nav-text">二.死锁代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-结果分析"><span class="nav-number">4.</span> <span class="nav-text">三.结果分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页元素"><span class="nav-number">2.</span> <span class="nav-text">网页元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素分类"><span class="nav-number">3.</span> <span class="nav-text">元素分类</span></a></li></ol></div>
             
 
           </div>
